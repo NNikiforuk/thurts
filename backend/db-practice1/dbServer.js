@@ -8,6 +8,7 @@ const DB_USER = process.env.DB_USER
 const DB_PASSWORD = process.env.DB_PASSWORD
 const DB_DATABASE = process.env.DB_DATABASE
 const DB_PORT = process.env.DB_PORT
+const PORT = process.env.PORT
 
 const pool = mysql.createPool({
     connectionLimit: 100,
@@ -22,4 +23,8 @@ pool.getConnection( (err, connection) => {
     if (err) throw err;
 
     console.log("DB connected OK: " + connection.threadId)
+})
+
+app.listen(PORT, () => {
+console.log(`Server started on port ${PORT}`)
 })
